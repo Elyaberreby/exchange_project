@@ -1,34 +1,18 @@
-// import { async } from 'q';
-import React, { useEffect, useState } from 'react'
 
-export default function Input({amount,setAmount,coins,onSelectEndCoin,onSelectStartCoin}) {
-
-
-
+function Input({startExchangeInput, setStartExchangeInput, startCurrencyInput, setStartCurrencyInput}) {
 
   return (
-    <div className='mx-auto col-md-6 text-center'>
-      <h3>enter amount</h3>
-      <input value={amount} onChange={(e)=>setAmount(e.target.value)}/>
-      <h3>selct coin type</h3>
-      <select onChange={(e)=>onSelectStartCoin(e.target.value)}>
-        {coins.map(item => {
-          return (
-            <option value={item.substr(0,3)} key={item}>{item.substr(0,3)}</option>
-          )
-        })}
-      </select>
-      <h3>selct coin type to convert</h3>
-      <select onChange={(e)=>
-        onSelectEndCoin(e.target.value)}>
-      {coins.map(item => {
-          return (
-            <option value={item.substr(3)} key={item}>{item.substr(3)}</option>
-          )
-        })}
-      </select>
+    <div className="input">
+        <input type="number" value={startExchangeInput} onChange={(e) => setStartExchangeInput(e.target.value)}/>
+        <select value={startCurrencyInput} name="startCurrency" onChange={(e) => setStartCurrencyInput(e.target.value)}>
+        <option value="USD">USD</option>
+        <option value="ILS">ILS</option>
+        <option value="THB">THB</option>
+        <option value="BTC">BTC</option>
+        <option value="EUR">EUR</option>
+        </select>
     </div>
   )
-
 }
 
+export default Input
